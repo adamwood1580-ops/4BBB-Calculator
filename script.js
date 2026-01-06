@@ -6,6 +6,9 @@ function calculate() {
   const rows = document.querySelectorAll("#players tbody tr");
   let playingHandicaps = [];
 
+  // Reset row styling
+  rows.forEach(row => row.style.background = "");
+
   rows.forEach(row => {
     const indexInput = row.cells[1].querySelector("input");
     const index = parseFloat(indexInput.value);
@@ -21,7 +24,7 @@ function calculate() {
     const course =
       (index * slope / 113) + (rating - par);
 
-    // 4BBB Playing Handicap (90%)
+    // Playing Handicap (4BBB 90%)
     const playing = course * 0.9;
 
     const roundedCourse = Math.round(course);
@@ -41,11 +44,16 @@ function calculate() {
     const playing = parseInt(row.cells[3].textContent);
     if (!isNaN(playing)) {
       row.cells[4].textContent = playing - lowest;
+
+      // Highlight lowest handicap player
+      if (playing === lowest) {
+        row.style.background = "#e8f5e9";
+      }
     }
   });
 }
 
-/* Optional: auto-calculate when inputs change */
+// Auto-recalculate on input change
 document.addEventListener("input", function (e) {
   if (e.target.tagName === "INPUT") {
     calculate();
