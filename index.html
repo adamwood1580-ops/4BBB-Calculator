@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <!-- Mobile scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>4BBB Handicap Calculator</title>
@@ -22,10 +20,12 @@
     .app {
       max-width: 900px;
       margin: 0 auto;
-      background: white;
+      background: rgba(255, 255, 255, 0.82);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     h1 {
@@ -80,7 +80,7 @@
     }
 
     tbody tr:nth-child(even) {
-      background: #fafafa;
+      background: rgba(0,0,0,0.03);
     }
 
     button {
@@ -103,7 +103,7 @@
     footer {
       text-align: center;
       font-size: 0.8rem;
-      color: #666;
+      color: #444;
       margin-top: 16px;
     }
   </style>
@@ -176,8 +176,6 @@
 
   </div>
 
-  <!-- JavaScript -->
   <script src="script.js"></script>
-
 </body>
 </html>
