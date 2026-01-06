@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- IMPORTANT: mobile scaling -->
+  <!-- Mobile scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>4BBB Handicap Calculator</title>
@@ -11,13 +11,29 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 16px;
+      margin: 0;
+      padding: 16px;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("fairway.JPG") center / cover no-repeat fixed;
+    }
+
+    .app {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     h1 {
       text-align: center;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
     }
 
     .controls {
@@ -30,6 +46,7 @@
 
     label {
       font-size: 0.9rem;
+      text-align: center;
     }
 
     input {
@@ -49,17 +66,44 @@
       border-collapse: collapse;
     }
 
+    th {
+      background: #f1f8f4;
+      font-weight: 600;
+    }
+
     th, td {
       border: 1px solid #ccc;
       padding: 8px;
       text-align: center;
       font-size: 0.9rem;
+      min-width: 80px;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafafa;
     }
 
     button {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       font-size: 1rem;
+      margin-top: 16px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #256628;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
       margin-top: 16px;
     }
   </style>
@@ -67,72 +111,72 @@
 
 <body>
 
-  <h1>4BBB Handicap Calculator</h1>
+  <div class="app">
 
-  <div class="controls">
-    <label>
-      Slope Rating
-      <input type="number" id="slope" value="113">
-    </label>
+    <h1>4BBB Handicap Calculator</h1>
 
-    <label>
-      Course Rating
-      <input type="number" value="66.5" readonly>
-    </label>
+    <div class="controls">
+      <label>
+        Slope Rating
+        <input type="number" id="slope" value="113">
+      </label>
 
-    <label>
-      Par
-      <input type="number" value="69" readonly>
-    </label>
+      <label>
+        Course Rating
+        <input type="number" value="66.5" readonly>
+      </label>
+
+      <label>
+        Par
+        <input type="number" value="69" readonly>
+      </label>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="players">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Handicap Index</th>
+            <th>Course Handicap</th>
+            <th>Playing Handicap (90%)</th>
+            <th>Shots Received</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input placeholder="Player 1"></td>
+            <td><input type="number" step="0.1"></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td><input placeholder="Player 2"></td>
+            <td><input type="number" step="0.1"></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td><input placeholder="Player 3"></td>
+            <td><input type="number" step="0.1"></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td><input placeholder="Player 4"></td>
+            <td><input type="number" step="0.1"></td>
+            <td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button onclick="calculate()">Calculate Handicaps</button>
+
+    <footer>
+      WHS-compliant 4BBB calculator
+    </footer>
+
   </div>
 
-  <div class="table-wrapper">
-    <table id="players">
-      <thead>
-        <tr>
-          <th>Player</th>
-          <th>Handicap Index</th>
-          <th>Course Handicap</th>
-          <th>Playing Handicap (90%)</th>
-          <th>Shots Received</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input placeholder="Player 1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><input placeholder="Player 2"></td>
-          <td><input type="number" step="0.1"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><input placeholder="Player 3"></td>
-          <td><input type="number" step="0.1"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><input placeholder="Player 4"></td>
-          <td><input type="number" step="0.1"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <button onclick="calculate()">Calculate Handicaps</button>
-
-  <!-- Load JavaScript LAST -->
+  <!-- JavaScript -->
   <script src="script.js"></script>
 
 </body>
