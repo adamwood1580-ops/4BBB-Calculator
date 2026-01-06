@@ -6,6 +6,10 @@
 
   <title>4BBB Handicap Calculator</title>
 
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -112,7 +116,6 @@
 <body>
 
   <div class="app">
-
     <h1>4BBB Handicap Calculator</h1>
 
     <div class="controls">
@@ -173,9 +176,16 @@
     <footer>
       WHS-compliant 4BBB calculator
     </footer>
-
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+
 </body>
 </html>
